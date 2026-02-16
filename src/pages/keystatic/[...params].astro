@@ -1,0 +1,19 @@
+---
+export const prerender = false;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keystatic Admin</title>
+  </head>
+  <body>
+    <div id="keystatic-app"></div>
+    <script>
+      import { makePage } from '@keystatic/astro/ui';
+      const page = makePage(import.meta.env.BASE_URL);
+      page.render(document.getElementById('keystatic-app'));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+---
+import { reader } from '../lib/keystatic';
+
+const investmentData = await reader.singletons.investment.read();
+---
+
+<section id="invest" class="section py-5">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <div class="section-tag">{investmentData?.tag || 'Why Invest'}</div>
+                <h2 class="section-title">{investmentData?.title || 'Designed for high footfall and recurring returns'}</h2>
+                <p class="section-subtitle">{investmentData?.subtitle || 'A curated experience-led high street'}</p>
+                <div class="checklist">
+                    {investmentData?.features?.map((feature) => (
+                        <div class="check-item reveal">
+                            <i class={feature.icon}></i> {feature.title}
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="image-stack reveal">
+                    <div class="img-1">
+                        <img src="https://images.unsplash.com/photo-1508921340878-ba53e1f016ec?auto=format&fit=crop&w=1600&q=80" alt="Retail interior">
+                    </div>
+                    <div class="img-2">
+                        <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80" alt="Office space">
+                    </div>
+                    <div class="floating-badge">
+                        <i class="fa-solid fa-medal"></i>
+                        <div>
+                            <h6>Brands signed</h6>
+                            <p>Guaranteed footfall</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

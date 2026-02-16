@@ -1,0 +1,31 @@
+---
+import { reader } from '../lib/keystatic';
+
+const heroData = await reader.singletons.hero.read();
+---
+
+<header class="hero d-flex align-items-center" id="home">
+    <div class="overlay"></div>
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-lg-7 hero-content">
+                <div class="eyebrow d-inline-flex align-items-center gap-2">
+                    <span class="pulse-dot"></span>
+                    {heroData?.eyebrow || 'Limited Inventory • Possession-ready'}
+                </div>
+                <h1 class="display-4 fw-bold mt-3 animate-up">{heroData?.headline || '🔥 Delhi\'s New Retail & Office Hotspot — Sector 18, Rohini!'}</h1>
+                <p class="lead mt-3 animate-up delay-1">{heroData?.description || 'Freehold, lockable units with premium frontage on the main road.'}</p>
+                <div class="d-flex flex-wrap gap-3 mt-4 animate-up delay-2">
+                    <a href={heroData?.primaryButtonLink || '#contact'} class="btn btn-cta btn-lg">{heroData?.primaryButtonText || 'Book Now'}</a>
+                    <a href={heroData?.secondaryButtonLink || '#brochure'} class="btn btn-outline-light btn-lg">{heroData?.secondaryButtonText || 'Download Brochure'}</a>
+                </div>
+                <div class="hero-badges mt-4 d-flex flex-wrap gap-3 animate-up delay-3">
+                    {heroData?.badges?.map((badge) => (
+                        <span class="badge badge-soft">{badge}</span>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+

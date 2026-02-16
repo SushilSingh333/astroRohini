@@ -1,0 +1,11 @@
+title: office-space
+badge: Hot
+price: Starting 500 sq.ft @ ₹70 Lakhs
+buttonText: Enquire Office
+features:
+  - icon: fa-solid fa-square
+    text: Flexible floor plates
+  - icon: fa-solid fa-snowflake
+    text: Centralized AC-ready
+  - icon: fa-solid fa-person-chalkboard
+    text: Ideal for consulting, IT, design studios

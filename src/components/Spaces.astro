@@ -1,0 +1,34 @@
+---
+import { reader } from '../lib/keystatic';
+
+const sectionData = await reader.singletons.spacesSection.read();
+const spaces = await reader.collections.spaces.all();
+---
+
+<section id="spaces" class="section py-5 bg-soft">
+    <div class="container">
+        <div class="section-tag text-center">{sectionData?.tag || 'Premium Inventory'}</div>
+        <h2 class="section-title text-center">{sectionData?.title || 'Tailored Retail & Office Spaces'}</h2>
+        <p class="section-subtitle text-center">{sectionData?.subtitle || 'Choose from efficient office floors and high-street retail'}</p>
+        <div class="row g-4 mt-4">
+            {spaces.map((item) => (
+                <div class="col-md-4">
+                    <div class="card option-card reveal">
+                        <div class="card-body">
+                            <div class="badge badge-premium">{item.entry.badge}</div>
+                            <h5 class="card-title">{item.entry.title.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h5>
+                            <p class="card-text">{item.entry.price}</p>
+                            <ul class="list-unstyled option-list">
+                                {item.entry.features.map((feature) => (
+                                    <li><i class={feature.icon}></i> {feature.text}</li>
+                                ))}
+                            </ul>
+                            <a href="#contact" class="btn btn-ghost">{item.entry.buttonText}</a>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+

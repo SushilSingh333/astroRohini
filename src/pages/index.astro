@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Location from '../components/Location.astro';
+import Spaces from '../components/Spaces.astro';
+import Highlights from '../components/Highlights.astro';
+import Payment from '../components/Payment.astro';
+import Investment from '../components/Investment.astro';
+import Brands from '../components/Brands.astro';
+import RERA from '../components/RERA.astro';
+import Contact from '../components/Contact.astro';
+import Modal from '../components/Modal.astro';
+import FloatingActions from '../components/FloatingActions.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+    <Navbar />
+    <Hero />
+    <Location />
+    <Spaces />
+    <Highlights />
+    <Payment />
+    <Investment />
+    <Brands />
+    <RERA />
+    <Contact />
+    <Modal />
+    <FloatingActions />
+    <Footer />
+</Layout>
+
+<script>
+    // Intersection observer for reveal animations
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.18 }
+    );
+
+    revealElements.forEach(el => observer.observe(el));
+
+    // CTA hover micro interaction
+    document.querySelectorAll('.btn-cta').forEach(btn => {
+        btn.addEventListener('mouseenter', () => btn.classList.add('hovered'));
+        btn.addEventListener('mouseleave', () => btn.classList.remove('hovered'));
+    });
+
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+            const targetId = link.getAttribute('href');
+            if (targetId && targetId.length > 1) {
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+</script>

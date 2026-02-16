@@ -1,0 +1,39 @@
+---
+import { reader } from '../lib/keystatic';
+
+const brands = await reader.collections.brands.all();
+---
+
+<section id="brands" class="section py-5 bg-soft">
+    <div class="container">
+        <div class="section-tag text-center">Footfall Ready</div>
+        <h2 class="section-title text-center">Brands already signed — guaranteed footfall</h2>
+        <div class="swiper brands-swiper mt-4">
+            <div class="swiper-wrapper">
+                {brands.map((brand) => (
+                    <div class="swiper-slide brand-card">{brand.entry.logo}</div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import Swiper from 'swiper';
+    import { Autoplay } from 'swiper/modules';
+    
+    new Swiper('.brands-swiper', {
+        modules: [Autoplay],
+        slidesPerView: 2,
+        spaceBetween: 16,
+        loop: true,
+        autoplay: { delay: 1800, disableOnInteraction: false },
+        breakpoints: {
+            576: { slidesPerView: 3 },
+            768: { slidesPerView: 4 },
+            992: { slidesPerView: 5 },
+        },
+    });
+</script>
+
+

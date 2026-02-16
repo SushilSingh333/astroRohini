@@ -1,0 +1,11 @@
+title: retail-shops
+badge: Bestseller
+price: Starting ₹90 Lakhs
+buttonText: Lock a Shop
+features:
+  - icon: fa-solid fa-store
+    text: Road-facing & atrium-facing
+  - icon: fa-solid fa-chess-queen
+    text: Double-height 14 ft
+  - icon: fa-solid fa-eye
+    text: Maximum frontage & visibility

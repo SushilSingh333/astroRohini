@@ -1,0 +1,43 @@
+---
+import { reader } from '../lib/keystatic';
+
+const locationData = await reader.singletons.location.read();
+---
+
+<section id="location" class="section py-5">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <div class="section-tag">{locationData?.tag || 'Prime Connectivity'}</div>
+                <h2 class="section-title">{locationData?.title || 'LSC Block E, Sector 18 (Main Road), Rohini — Delhi 110089'}</h2>
+                <p class="section-subtitle">{locationData?.subtitle || 'Two-side open corner plot with direct visibility'}</p>
+                <div class="location-grid">
+                    {locationData?.connectivity?.map((item) => (
+                        <div class="loc-item">
+                            <i class={item.icon}></i>
+                            <div>
+                                <h6>Connectivity</h6>
+                                <p>{item.text}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="map-card reveal">
+                    <div class="map-overlay"></div>
+                    <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1600&q=80" alt="Map view" class="img-fluid">
+                    <div class="map-info">
+                        <h5>Main Road Corner Plot</h5>
+                        <p>Sector 18, Rohini • LSC Block E</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="badge badge-soft">High Visibility</span>
+                            <span class="badge badge-soft">Two-Side Open</span>
+                            <span class="badge badge-soft">Footfall Magnet</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

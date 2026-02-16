@@ -1,0 +1,25 @@
+---
+import { reader } from '../lib/keystatic';
+
+const paymentData = await reader.singletons.payment.read();
+---
+
+<section id="payment" class="section py-5 bg-soft">
+    <div class="container">
+        <div class="section-tag text-center">{paymentData?.tag || 'Seamless Investment'}</div>
+        <h2 class="section-title text-center">{paymentData?.title || '10:90 Smart Payment Plan'}</h2>
+        <p class="section-subtitle text-center">{paymentData?.subtitle || 'Pay only 10% to book'}</p>
+        <div class="timeline mt-5">
+            {paymentData?.plans?.map((plan, index) => (
+                <div class="timeline-step reveal">
+                    <div class="step-circle">{index + 1}</div>
+                    <div>
+                        <h5>{plan.name}</h5>
+                        <p>{plan.description}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+

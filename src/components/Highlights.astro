@@ -1,0 +1,31 @@
+---
+import { reader } from '../lib/keystatic';
+
+const sectionData = await reader.singletons.highlightsSection.read();
+const highlights = await reader.collections.highlights.all();
+---
+
+<section id="highlights" class="section py-5">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-5">
+                <div class="section-tag">{sectionData?.tag || 'Assured Advantage'}</div>
+                <h2 class="section-title">{sectionData?.title || 'Project Highlights'}</h2>
+                <p class="section-subtitle">{sectionData?.subtitle || 'Purpose-built for high ROI'}</p>
+            </div>
+            <div class="col-lg-7">
+                <div class="icon-grid">
+                    {highlights.map((item) => (
+                        <div class="icon-card reveal">
+                            <i class={item.entry.icon}></i>
+                            <h6>{item.entry.title.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h6>
+                            <p>{item.entry.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
